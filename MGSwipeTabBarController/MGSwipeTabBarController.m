@@ -52,13 +52,15 @@ CGFloat const kBPDefaultSelectedIndexAnimationDuration = .35f;
     
     NSUInteger count = viewControllers.count;
     
-    if (!_containerView) {
-        _containerView = [[UIView alloc] init];
-        [self.view addSubview:_containerView];
-        
-        _containerView.translatesAutoresizingMaskIntoConstraints = NO;
-        [self updateContainerConstraints:count];
+    if (!_containerView) { // если обновляем списки ViewControllers
+        [self.containerView removeFromSuperview];
     }
+    _containerView = [[UIView alloc] init];
+    [self.view addSubview:_containerView];
+    
+    _containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self updateContainerConstraints:count];
+    
     
     NSMutableDictionary *viewBindings = [NSMutableDictionary dictionary];
     NSMutableString *autoLayoutString = [NSMutableString string];
